@@ -1,13 +1,26 @@
-import {ApplicationConfig} from '@angular/core';
+import { ApplicationConfig } from '@angular/core';
 import {
-  PreloadAllModules, provideRouter, withComponentInputBinding, withInMemoryScrolling, withPreloading, withRouterConfig
+	PreloadAllModules,
+	provideRouter,
+	withComponentInputBinding,
+	withInMemoryScrolling,
+	withPreloading,
+	withRouterConfig,
 } from '@angular/router';
 
-import {routes} from './app.routes';
+import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes,
-    withRouterConfig({
-    onSameUrlNavigation: 'reload',
-  }), withInMemoryScrolling(), withPreloading(PreloadAllModules), withComponentInputBinding()),]
+	providers: [
+		provideRouter(
+			routes,
+			withRouterConfig({
+				onSameUrlNavigation: 'reload',
+				paramsInheritanceStrategy: 'always',
+			}),
+			withInMemoryScrolling(),
+			withPreloading(PreloadAllModules),
+			withComponentInputBinding(),
+		),
+	],
 };
